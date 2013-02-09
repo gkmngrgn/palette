@@ -1,0 +1,68 @@
+# project specific
+borsala.sqlite3
+media
+venv
+*.pid
+whoosh_index
+project/settings/local.py
+
+## for designers!!1!
+tmp
+._*
+.DS_Store
+
+## python
+*.py[co]
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+#Translations
+*.mo
+
+#Developer Tools
+.mr.developer.cfg
+.vagrant
+.idea
+
+## django
+*.log
+*.pot
+*.pyc
+project/settings_local.py
+
+## sphinx
+docs/build
+
+
+## ignores for designers
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
