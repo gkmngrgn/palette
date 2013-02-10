@@ -2,7 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Palette - {% block title %}Welcome{% end %}</title>
+    <title>
+      Palette {% block title %}{{ _("Welcome") }}{% end %}
+    </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -17,7 +19,25 @@
     <link href="/static/css/main.css" rel="stylesheet">
   </head>
   <body>
-    {% block content %}{% end %}
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">Palette</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      {% for message in messages %}
+        <div class="alert alert-{{ message['type'] }}">
+          <button type="button" class="close" data-dismiss="alert">
+            &times;
+          </button>
+          {{ message['content'] }}
+        </div>
+      {% end %}
+      {% block content %}{% end %}
+    </div>
 
     <script src="/static/js/jquery-1.9.1.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>

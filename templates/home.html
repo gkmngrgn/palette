@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-  hello world.
+  <form action="/" method="post" enctype="multipart/form-data">
+    <label>
+      {{ _("File") }}
+      <input type="file" name="image" />
+    </label>
+
+    <button type="submit" class="btn btn-primary">{{ _("Upload") }}</button>
+  </form>
 {% end %}
