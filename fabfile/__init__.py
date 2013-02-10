@@ -1,14 +1,15 @@
 from fabric.api import local
 
 
-def runtests():
+def test():
     """
     Runs tornado unit tests.
     """
-    local('python -m tornado.test.runtests')
+
+    local('python -m tornado.test.runtests tests')
 
 
-def runserver(port=None):
+def server(port=None):
     """
     Runs tornado web server.
 
