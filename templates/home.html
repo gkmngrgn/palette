@@ -19,7 +19,8 @@
       <div class="span9 palette">
         {% for color in palette %}
           <span class="color-box"
-                style="background-color: {{ color }};"></span>
+                style="background-color: {{ color[0] }};"
+                data-count="{{ color[1] }}"></span>
         {% end %}
       </div>
     </div>

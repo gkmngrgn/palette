@@ -2,6 +2,8 @@ try:
     from cStringIO import StringIO
 except ImportError:
     from StringIO import StringIO
+
+import operator
 from wand.image import Image as WandImage
 
 
@@ -29,5 +31,8 @@ class Image(object):
                         col.string: palette.get(col.string, 0) + 1
                     })
 
-        palette = palette.keys()
+        sorted_palette = sorted(
+            palette.iteritems(), key=operator.itemgetter(1), reverse=True)
+        palette = filter(lambda x: x[1] > 1, sorted_palette)
+
         return palette
