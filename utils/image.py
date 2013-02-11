@@ -33,6 +33,6 @@ class Image(object):
 
         sorted_palette = sorted(
             palette.iteritems(), key=operator.itemgetter(1), reverse=True)
-        palette = filter(lambda x: x[1] > 1, sorted_palette)
+        palette = filter(lambda x: x[1] > 10, sorted_palette)
 
         return palette
