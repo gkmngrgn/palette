@@ -6,8 +6,8 @@ class HomeTest(AsyncHTTPTestCase):
     def get_app(self):
         return Application()
 
-    def test_homepage_contains_hello_world(self):
+    def test_homepage_contains_palette(self):
         self.http_client.fetch(self.get_url('/'), self.stop)
         response = self.wait()
 
-        self.assertIn('hello world', response.body)
+        self.assertIn('Palette', response.body)

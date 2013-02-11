@@ -9,4 +9,19 @@
 
     <button type="submit" class="btn btn-primary">{{ _("Upload") }}</button>
   </form>
+
+  {% if palette %}
+    <div class="row">
+      <div class="span3 image">
+        <img src="{{ image_data }}" class="img-polaroid" />
+      </div>
+
+      <div class="span9 palette">
+        {% for color in palette %}
+          <span class="color-box"
+                style="background-color: {{ color }};"></span>
+        {% end %}
+      </div>
+    </div>
+  {% end %}
 {% end %}
