@@ -29,4 +29,5 @@ class Image(object):
                         col.string: palette.get(col.string, 0) + 1
                     })
 
+        palette = palette.keys()
         return palette
