@@ -1,10 +1,14 @@
+import operator
+
 try:
     from cStringIO import StringIO
 except ImportError:
     from StringIO import StringIO
 
-import operator
-from wand.image import Image as WandImage
+try:
+    import Image as MagickImage
+except ImportError:
+    from PIL import Image as MagickImage
 
 
 class Image(object):
@@ -18,18 +22,15 @@ class Image(object):
         return image_data
 
     def get_palette(self):
-        image = StringIO(self.image.body)
+        image = MagickImage.open(StringIO(self.image.body))
+        width, height = image.size
+        pixels = image.load()
         palette = {}
 
-        with WandImage(file=image) as img:
-            img.trim()
-            img.resize(width=100, height=100, filter='box')
-
-            for row in img:
-                for col in row:
-                    palette.update({
-                        col.string: palette.get(col.string, 0) + 1
-                    })
+        for w in range(width):
+            for h in range(height):
+                pixel = '#%02x%02x%02x' % pixels[w, h]
+                palette.update({pixel: palette.get(pixel, 0) + 1})
 
         sorted_palette = sorted(
             palette.iteritems(), key=operator.itemgetter(1), reverse=True)

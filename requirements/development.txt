@@ -1,2 +1,4 @@
-ipython==0.13.1
-ipdb==0.7
+-r global.txt
+
+ipython
+ipdb
