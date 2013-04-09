@@ -1,0 +1,1 @@
+.. image:: static/doc_files/palette.png
