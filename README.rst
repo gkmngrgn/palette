@@ -1,5 +1,5 @@
-A simple palette application that is written Python. If you deal with this
-project and have an idea, please contact me or fork it or open an issue.
+A simple palette application that is written in Python. If you deal with 
+this project and have an idea, please contact me or fork it or open an issue.
 Thanks.
 
 Usage
