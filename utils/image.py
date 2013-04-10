@@ -1,14 +1,11 @@
 import operator
+import colorific
+from PIL import Image as Im
 
 try:
     from cStringIO import StringIO
 except ImportError:
     from StringIO import StringIO
-
-try:
-    import Image as MagickImage
-except ImportError:
-    from PIL import Image as MagickImage
 
 
 class Image(object):
@@ -22,18 +19,14 @@ class Image(object):
         return image_data
 
     def get_palette(self):
-        image = MagickImage.open(StringIO(self.image.body))
-        width, height = image.size
-        pixels = image.load()
-        palette = {}
+        image = Im.open(StringIO(self.image.body))
+        palette = colorific.extract_colors(image)
+        palette_dict = {}
+        for color in palette.colors:
+            color_hex = colorific.rgb_to_hex(color.value)
+            palette_dict[color_hex] = color.prominence
 
-        for w in range(width):
-            for h in range(height):
-                pixel = '#%02x%02x%02x' % pixels[w, h]
-                palette.update({pixel: palette.get(pixel, 0) + 1})
-
-        sorted_palette = sorted(
-            palette.iteritems(), key=operator.itemgetter(1), reverse=True)
-        palette = filter(lambda x: x[1] > 10, sorted_palette)
-
-        return palette
+        colors = sorted(
+            palette_dict.iteritems(), key=operator.itemgetter(1),
+            reverse=True)
+        return colors

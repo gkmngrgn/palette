@@ -1,3 +1,4 @@
 Fabric==1.6.0
 Pillow==2.0.0
 tornado==3.0.1
+-e git+git@github.com:gkmngrgn/colorific.git@pillow-version-fix#egg=colorific
